@@ -1,6 +1,8 @@
 defmodule Malomo.HTTP.Hackney do
   @behaviour Malomo.HTTP
 
+  @spec request(Malomo.Request.t(), any)
+          :: { :ok, Malomo.HTTP.response_t() } | { :error, any }
   def request(request, opts) do
     opts = opts ++ [:with_body]
 
