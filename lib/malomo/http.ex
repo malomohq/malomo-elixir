@@ -9,6 +9,6 @@ defmodule Malomo.HTTP do
                          status_code: pos_integer
                        }
 
-  @callback request(Malomo.Request.t(), opts :: term) ::
-              {:ok, response_t} | {:error, reason :: any}
+  @callback request(request :: Malomo.Request.t(), opts :: term)
+              :: { :ok, response :: response_t } | { :error, reason :: any }
 end
