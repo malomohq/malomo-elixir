@@ -21,7 +21,8 @@ defmodule Malomo.MixProject do
     [
       { :hackney,  "~> 1.14",   optional: true },
       { :jason,    "~> 1.1",    optional: true },
-      { :dialyxir, "~> 1.0-rc", only: [:dev, :test] }
+      { :dialyxir, "~> 1.0-rc", only: [:dev, :test] },
+      { :ex_doc,   "~> 0.19",   only: :dev }
     ]
   end
 end
