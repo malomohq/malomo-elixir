@@ -18,6 +18,9 @@ defmodule Malomo.MixProject do
   end
 
   defp deps do
-    []
+    [
+      { :hackney, "~> 1.14", optional: true },
+      { :jason,   "~> 1.1",  optional: true }
+    ]
   end
 end
