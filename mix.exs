@@ -19,8 +19,9 @@ defmodule Malomo.MixProject do
 
   defp deps do
     [
-      { :hackney, "~> 1.14", optional: true },
-      { :jason,   "~> 1.1",  optional: true }
+      { :hackney,  "~> 1.14",   optional: true },
+      { :jason,    "~> 1.1",    optional: true },
+      { :dialyxir, "~> 1.0-rc", only: [:dev, :test] }
     ]
   end
 end
