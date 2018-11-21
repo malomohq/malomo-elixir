@@ -1,22 +1,20 @@
 defmodule Malomo.Config do
   @type t :: %__MODULE__{
+               api_key: binary,
                host: binary,
                http_client: module,
                http_client_opts: any,
                json_codec: module,
                port: pos_integer | nil,
-               private_api_key: binary,
-               public_api_key: binary,
                scheme: binary
              }
 
-  defstruct host: nil,
+  defstruct api_key: nil,
+            host: nil,
             http_client: Malomo.HTTP.Hackney,
             http_client_opts: [],
             json_codec: Jason,
             port: nil,
-            private_api_key: nil,
-            public_api_key: nil,
             scheme: nil
 
   @doc """
