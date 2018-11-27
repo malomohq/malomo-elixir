@@ -3,16 +3,20 @@ defmodule Malomo.HTTP do
   Behaviour for implementing an HTTP client.
   """
 
+  @type headers_t :: [{binary, binary}]
+
+  @type method_t :: :delete | :get | :post | :put
+
   @type response_t :: %{
                          body: binary,
-                         headers: [{binary, binary}],
+                         headers: headers_t,
                          status_code: pos_integer
                        }
 
   @callback request(
-              method :: binary,
+              method :: method_t,
               url :: binary,
-              headers :: [{binary, binary}],
+              headers :: headers_t,
               body :: binary,
               opts :: any
             ) :: { :ok, response :: response_t } | { :error, reason :: any }
