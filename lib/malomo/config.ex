@@ -5,6 +5,7 @@ defmodule Malomo.Config do
                http_client: module,
                http_client_opts: any,
                json_codec: module,
+               path: binary,
                port: pos_integer | nil,
                scheme: binary
              }
@@ -14,6 +15,7 @@ defmodule Malomo.Config do
             http_client: Malomo.HTTP.Hackney,
             http_client_opts: [],
             json_codec: Jason,
+            path: "",
             port: nil,
             scheme: nil
 
