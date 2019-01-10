@@ -1,4 +1,7 @@
 defmodule Malomo.Order do
+  @doc """
+  Create an order.
+  """
   @spec create(map) :: Malomo.Operation.t()
   def create(params) do
     %Malomo.Operation{
@@ -8,6 +11,9 @@ defmodule Malomo.Order do
     }
   end
 
+  @doc """
+  Delete an order.
+  """
   @spec delete(binary) :: Malomo.Operation.t()
   def delete(id) do
     %Malomo.Operation{
@@ -16,6 +22,9 @@ defmodule Malomo.Order do
     }
   end
 
+  @doc """
+  Retrieve a single order.
+  """
   @spec find(binary) :: Malomo.Operation.t()
   def find(id) do
     %Malomo.Operation{
@@ -24,6 +33,9 @@ defmodule Malomo.Order do
     }
   end
 
+  @doc """
+  Update an order.
+  """
   @spec update(binary, map) :: Malomo.Operation.t()
   def update(id, params) do
     %Malomo.Operation{

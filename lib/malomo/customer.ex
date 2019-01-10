@@ -1,4 +1,7 @@
 defmodule Malomo.Customer do
+  @doc """
+  Create a customer.
+  """
   @spec create(map) :: Malomo.Operation.t()
   def create(params) do
     %Malomo.Operation{
@@ -8,6 +11,9 @@ defmodule Malomo.Customer do
     }
   end
 
+  @doc """
+  Delete a customer.
+  """
   @spec delete(binary) :: Malomo.Operation.t()
   def delete(id) do
     %Malomo.Operation{
@@ -16,6 +22,9 @@ defmodule Malomo.Customer do
     }
   end
 
+  @doc """
+  Retrieve a single customer.
+  """
   @spec find(binary) :: Malomo.Operation.t()
   def find(id) do
     %Malomo.Operation{
@@ -24,6 +33,9 @@ defmodule Malomo.Customer do
     }
   end
 
+  @doc """
+  Update a customer.
+  """
   @spec update(binary, map) :: Malomo.Operation.t()
   def update(id, params) do
     %Malomo.Operation{
