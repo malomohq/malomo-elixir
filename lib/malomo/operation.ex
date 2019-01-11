@@ -3,7 +3,7 @@ defmodule Malomo.Operation do
 
   @type t :: %__MODULE__{ action: action_t, params: map, path: binary }
 
-  defstruct [:action, :params, :path]
+  defstruct [action: nil, params: %{}, path: nil]
 
   def perform(operation, config) do
     case make_request(operation, config) do
