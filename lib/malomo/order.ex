@@ -32,16 +32,4 @@ defmodule Malomo.Order do
       path: "/orders/#{id}"
     }
   end
-
-  @doc """
-  Update an order.
-  """
-  @spec update(binary, map) :: Malomo.Operation.t()
-  def update(id, params) do
-    %Malomo.Operation{
-      action: :put,
-      params: params,
-      path: "/orders/#{id}"
-    }
-  end
 end
