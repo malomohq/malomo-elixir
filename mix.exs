@@ -5,7 +5,7 @@ defmodule Malomo.MixProject do
     [
       app: :malomo,
       version: "0.0.3",
-      elixir: "~> 1.8",
+      elixir: "~> 1.7",
       start_permanent: Mix.env() == :prod,
       deps: deps(),
       dialyzer: [plt_add_apps: [:hackney]],
