@@ -21,4 +21,16 @@ defmodule Malomo.Tracker do
       path: "/trackers/#{id}"
     }
   end
+
+  @doc """
+  Retrieve a list of trackers.
+  """
+  @spec list(map) :: Malomo.Operation.t()
+  def list(params \\ %{}) do
+    %Malomo.Operation{
+      action: :get,
+      params: params,
+      path: "/trackers"
+    }
+  end
 end

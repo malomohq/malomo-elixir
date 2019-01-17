@@ -34,6 +34,18 @@ defmodule Malomo.Customer do
   end
 
   @doc """
+  Retrieve a list of customers.
+  """
+  @spec list(map) :: Malomo.Operation.t()
+  def list(params \\ %{}) do
+    %Malomo.Operation{
+      action: :get,
+      params: params,
+      path: "/customers"
+    }
+  end
+
+  @doc """
   Update a customer.
   """
   @spec update(binary, map) :: Malomo.Operation.t()

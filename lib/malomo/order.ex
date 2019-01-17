@@ -34,14 +34,14 @@ defmodule Malomo.Order do
   end
 
   @doc """
-  Update an order.
+  Retrieve a list of orders.
   """
-  @spec update(binary, map) :: Malomo.Operation.t()
-  def update(id, params) do
+  @spec list(map) :: Malomo.Operation.t()
+  def list(params \\ %{}) do
     %Malomo.Operation{
-      action: :put,
+      action: :get,
       params: params,
-      path: "/orders/#{id}"
+      path: "/orders"
     }
   end
 end
