@@ -1,5 +1,16 @@
 defmodule Malomo.Order do
   @doc """
+  Add a customer to an order.
+  """
+  @spec add_customer(binary, binary) :: Malomo.Operation.t()
+  def add_customer(order_id, customer_id) do
+    %Malomo.Operation{
+      action: :post,
+      path: "/orders/#{order_id}/customers/#{customer_id}"
+    }
+  end
+
+  @doc """
   Create an order.
   """
   @spec create(map) :: Malomo.Operation.t()
