@@ -44,4 +44,19 @@ defmodule Malomo.Webhook do
       path: "/webhooks/#{id}"
     }
   end
+
+  @doc """
+  Verify the signature of an incoming webhook event.
+  """
+  @spec verify_signature(binary, binary, binary) :: :ok | :error
+  def verify_signature(signature, secret, body) do
+    computed_signature = Base.encode16(:crypto.hmac(:sha256, secret, body))
+
+    cond do
+      signature == computed_signature ->
+        :ok
+      true ->
+        :error
+    end
+  end
 end
