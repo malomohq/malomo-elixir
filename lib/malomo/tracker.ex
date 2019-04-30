@@ -1,4 +1,6 @@
 defmodule Malomo.Tracker do
+  @moduledoc false
+
   @doc """
   Create a tracker.
   """
