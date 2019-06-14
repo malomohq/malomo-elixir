@@ -29,7 +29,7 @@ defmodule Malomo.Shipment do
   def get_customer(id) do
     %Malomo.Operation{
       action: :get,
-      path: "/shipmens/#{id}/customers"
+      path: "/shipments/#{id}/customers"
     }
   end
 
