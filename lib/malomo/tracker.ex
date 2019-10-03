@@ -4,7 +4,7 @@ defmodule Malomo.Tracker do
   @doc """
   Create a tracker.
   """
-  @spec create(binary, map) :: Malomo.Operation.t()
+  @spec create(String.t(), map) :: Malomo.Operation.t()
   def create(order_id, params) do
     %Malomo.Operation{
       method: :post,
@@ -16,7 +16,7 @@ defmodule Malomo.Tracker do
   @doc """
   Retrieve a single tracker.
   """
-  @spec find(binary) :: Malomo.Operation.t()
+  @spec find(String.t()) :: Malomo.Operation.t()
   def find(id) do
     %Malomo.Operation{
       method: :get,

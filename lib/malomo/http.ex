@@ -5,16 +5,16 @@ defmodule Malomo.HTTP do
 
   @type response_t ::
           %{
-            body: binary,
+            body: String.t(),
             headers: Malomo.http_headers_t(),
             status_code: pos_integer
           }
 
   @callback request(
               method :: Malomo.http_method_t(),
-              url :: binary,
+              url :: String.t(),
               headers :: Malomo.http_headers_t(),
-              body :: binary,
+              body :: String.t(),
               opts :: any
             ) :: { :ok, response :: response_t } | { :error, reason :: any }
 end

@@ -14,7 +14,7 @@ defmodule Malomo.Customer do
   @doc """
   Delete a customer.
   """
-  @spec delete(binary) :: Malomo.Operation.t()
+  @spec delete(String.t()) :: Malomo.Operation.t()
   def delete(id) do
     %Malomo.Operation{
       method: :delete,
@@ -25,7 +25,7 @@ defmodule Malomo.Customer do
   @doc """
   Retrieve a single customer.
   """
-  @spec find(binary) :: Malomo.Operation.t()
+  @spec find(String.t()) :: Malomo.Operation.t()
   def find(id) do
     %Malomo.Operation{
       method: :get,
@@ -48,7 +48,7 @@ defmodule Malomo.Customer do
   @doc """
   Update a customer.
   """
-  @spec update(binary, map) :: Malomo.Operation.t()
+  @spec update(String.t(), map) :: Malomo.Operation.t()
   def update(id, params) do
     %Malomo.Operation{
       method: :put,

@@ -1,7 +1,7 @@
 defmodule Malomo.HTTP.Hackney do
   @behaviour Malomo.HTTP
 
-  @spec request(Malomo.http_method_t(), binary, Malomo.http_headers_t(), binary, any) ::
+  @spec request(Malomo.http_method_t(), String.t(), Malomo.http_headers_t(), String.t(), any) ::
           { :ok, Malomo.HTTP.response_t() } | { :error, any }
   def request(method, url, headers, body, opts) do
     opts = opts ++ [:with_body]

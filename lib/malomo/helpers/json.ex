@@ -1,4 +1,6 @@
 defmodule Malomo.Helpers.JSON do
+  @moduledoc false
+  
   def decode(string, config) do
     case config.json_codec.decode(string) do
       { :ok, result } ->

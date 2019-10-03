@@ -3,7 +3,7 @@ defmodule Malomo.Response do
 
   @type t :: %__MODULE__{
                body: map,
-               headers: [{binary, binary}],
+               headers: [{String.t(), String.t()}],
                private: map,
                status_code: pos_integer
              }

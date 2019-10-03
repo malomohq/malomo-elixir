@@ -14,7 +14,7 @@ defmodule Malomo.Webhook do
   @doc """
   Delete a webhook.
   """
-  @spec delete(binary) :: Malomo.Operation.t()
+  @spec delete(String.t()) :: Malomo.Operation.t()
   def delete(id) do
     %Malomo.Operation{
       method: :delete,
@@ -25,7 +25,7 @@ defmodule Malomo.Webhook do
   @doc """
   Retrieve a single webhook.
   """
-  @spec find(binary) :: Malomo.Operation.t()
+  @spec find(String.t()) :: Malomo.Operation.t()
   def find(id) do
     %Malomo.Operation{
       method: :get,
@@ -36,7 +36,7 @@ defmodule Malomo.Webhook do
   @doc """
   Update a webhook.
   """
-  @spec update(binary, map) :: Malomo.Operation.t()
+  @spec update(String.t(), map) :: Malomo.Operation.t()
   def update(id, params) do
     %Malomo.Operation{
       method: :put,
@@ -48,7 +48,7 @@ defmodule Malomo.Webhook do
   @doc """
   Verify the signature of an incoming webhook event.
   """
-  @spec verify_signature(binary, binary, binary) :: :ok | :error
+  @spec verify_signature(String.t(), String.t(), String.t()) :: :ok | :error
   def verify_signature(signature, secret, body) do
     computed_signature = Base.encode16(:crypto.hmac(:sha256, secret, body))
 

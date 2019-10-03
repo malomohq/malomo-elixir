@@ -1,16 +1,16 @@
 defmodule Malomo.Config do
   @type t :: %__MODULE__{
-               api_key: binary,
+               api_key: String.t(),
                headers: Malomo.http_headers_t(),
-               host: binary,
+               host: String.t(),
                http_client: module,
                http_client_opts: any,
                json_codec: module,
-               path: binary,
+               path: String.t(),
                port: pos_integer | nil,
                retry: boolean,
                retry_opts: Keyword.t(),
-               scheme: binary
+               scheme: String.t()
              }
 
   defstruct api_key: nil,

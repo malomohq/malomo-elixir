@@ -2,7 +2,7 @@ defmodule Malomo.Operation do
   @type t :: %__MODULE__{
                method: Malomo.http_method_t(),
                params: map,
-               path: binary
+               path: String.t()
              }
 
   defstruct [method: nil, params: %{}, path: nil]

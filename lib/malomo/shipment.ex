@@ -14,7 +14,7 @@ defmodule Malomo.Shipment do
   @doc """
   Retrieve a single shipment.
   """
-  @spec find(binary) :: Malomo.Operation.t()
+  @spec find(String.t()) :: Malomo.Operation.t()
   def find(id) do
     %Malomo.Operation{
       method: :get,
@@ -25,7 +25,7 @@ defmodule Malomo.Shipment do
   @doc """
   Retrieve the customer associated with a shipment.
   """
-  @spec get_customer(binary) :: Malomo.Operation.t()
+  @spec get_customer(String.t()) :: Malomo.Operation.t()
   def get_customer(id) do
     %Malomo.Operation{
       method: :get,
@@ -36,7 +36,7 @@ defmodule Malomo.Shipment do
   @doc """
   Retrieve the order associated with a shipment.
   """
-  @spec get_order(binary) :: Malomo.Operation.t()
+  @spec get_order(String.t()) :: Malomo.Operation.t()
   def get_order(id) do
     %Malomo.Operation{
       method: :get,
@@ -47,7 +47,7 @@ defmodule Malomo.Shipment do
   @doc """
   Update a shipment.
   """
-  @spec update(binary, map) :: Malomo.Operation.t()
+  @spec update(String.t(), map) :: Malomo.Operation.t()
   def update(id, params) do
     %Malomo.Operation{
       method: :put,

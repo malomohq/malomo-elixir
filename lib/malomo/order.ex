@@ -2,7 +2,7 @@ defmodule Malomo.Order do
   @doc """
   Add a customer to an order.
   """
-  @spec add_customer(binary, binary) :: Malomo.Operation.t()
+  @spec add_customer(String.t(), String.t()) :: Malomo.Operation.t()
   def add_customer(order_id, customer_id) do
     %Malomo.Operation{
       method: :post,
@@ -25,7 +25,7 @@ defmodule Malomo.Order do
   @doc """
   Delete an order.
   """
-  @spec delete(binary) :: Malomo.Operation.t()
+  @spec delete(String.t()) :: Malomo.Operation.t()
   def delete(id) do
     %Malomo.Operation{
       method: :delete,
@@ -36,7 +36,7 @@ defmodule Malomo.Order do
   @doc """
   Retrieve a single order.
   """
-  @spec find(binary) :: Malomo.Operation.t()
+  @spec find(String.t()) :: Malomo.Operation.t()
   def find(id) do
     %Malomo.Operation{
       method: :get,
@@ -59,7 +59,7 @@ defmodule Malomo.Order do
   @doc """
   Update an order.
   """
-  @spec update(binary, map) :: Malomo.Operation.t()
+  @spec update(String.t(), map) :: Malomo.Operation.t()
   def update(id, params \\ %{}) do
     %Malomo.Operation{
       method: :put,
