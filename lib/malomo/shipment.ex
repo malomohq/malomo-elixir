@@ -10,6 +10,17 @@ defmodule Malomo.Shipment do
       path: "/shipments"
     }
   end
+  
+  @doc """
+  Delete a shipment.
+  """
+  @spec delete(String.t()) :: Malomo.Operation.t()
+  def delete(id) do
+    %Malomo.Operation{
+      method: :delete,
+      path: "/shipments/#{id}"
+    }
+  end
 
   @doc """
   Retrieve a single shipment.
