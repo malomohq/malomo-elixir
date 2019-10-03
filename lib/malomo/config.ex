@@ -19,7 +19,7 @@ defmodule Malomo.Config do
             http_client: Malomo.HTTP.Hackney,
             http_client_opts: [],
             json_codec: Jason,
-            path: "",
+            path: "/",
             port: nil,
             retry: false,
             retry_opts: [],
