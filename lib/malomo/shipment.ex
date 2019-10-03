@@ -5,7 +5,7 @@ defmodule Malomo.Shipment do
   @spec create(map) :: Malomo.Operation.t()
   def create(params) do
     %Malomo.Operation{
-      action: :post,
+      method: :post,
       params: params,
       path: "/shipments"
     }
@@ -17,7 +17,7 @@ defmodule Malomo.Shipment do
   @spec find(binary) :: Malomo.Operation.t()
   def find(id) do
     %Malomo.Operation{
-      action: :get,
+      method: :get,
       path: "/shipments/#{id}"
     }
   end
@@ -28,7 +28,7 @@ defmodule Malomo.Shipment do
   @spec get_customer(binary) :: Malomo.Operation.t()
   def get_customer(id) do
     %Malomo.Operation{
-      action: :get,
+      method: :get,
       path: "/shipments/#{id}/customers"
     }
   end
@@ -39,7 +39,7 @@ defmodule Malomo.Shipment do
   @spec get_order(binary) :: Malomo.Operation.t()
   def get_order(id) do
     %Malomo.Operation{
-      action: :get,
+      method: :get,
       path: "/shipments/#{id}/orders"
     }
   end
@@ -50,7 +50,7 @@ defmodule Malomo.Shipment do
   @spec update(binary, map) :: Malomo.Operation.t()
   def update(id, params) do
     %Malomo.Operation{
-      action: :put,
+      method: :put,
       params: params,
       path: "/shipments/#{id}"
     }

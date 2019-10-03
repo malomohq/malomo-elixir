@@ -5,7 +5,7 @@ defmodule Malomo.Account do
   @spec get :: Malomo.Operation.t()
   def get do
     %Malomo.Operation{
-      action: :get,
+      method: :get,
       path: "/accounts/self"
     }
   end

@@ -7,7 +7,7 @@ defmodule Malomo.Tracker do
   @spec create(binary, map) :: Malomo.Operation.t()
   def create(order_id, params) do
     %Malomo.Operation{
-      action: :post,
+      method: :post,
       params: params,
       path: "/orders/#{order_id}/trackers"
     }
@@ -19,7 +19,7 @@ defmodule Malomo.Tracker do
   @spec find(binary) :: Malomo.Operation.t()
   def find(id) do
     %Malomo.Operation{
-      action: :get,
+      method: :get,
       path: "/trackers/#{id}"
     }
   end
@@ -30,7 +30,7 @@ defmodule Malomo.Tracker do
   @spec list(map) :: Malomo.Operation.t()
   def list(params \\ %{}) do
     %Malomo.Operation{
-      action: :get,
+      method: :get,
       params: params,
       path: "/trackers"
     }

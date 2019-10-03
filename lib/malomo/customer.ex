@@ -5,7 +5,7 @@ defmodule Malomo.Customer do
   @spec create(map) :: Malomo.Operation.t()
   def create(params) do
     %Malomo.Operation{
-      action: :post,
+      method: :post,
       params: params,
       path: "/customers"
     }
@@ -17,7 +17,7 @@ defmodule Malomo.Customer do
   @spec delete(binary) :: Malomo.Operation.t()
   def delete(id) do
     %Malomo.Operation{
-      action: :delete,
+      method: :delete,
       path: "/customers/#{id}"
     }
   end
@@ -28,7 +28,7 @@ defmodule Malomo.Customer do
   @spec find(binary) :: Malomo.Operation.t()
   def find(id) do
     %Malomo.Operation{
-      action: :get,
+      method: :get,
       path: "/customers/#{id}"
     }
   end
@@ -39,7 +39,7 @@ defmodule Malomo.Customer do
   @spec list(map) :: Malomo.Operation.t()
   def list(params \\ %{}) do
     %Malomo.Operation{
-      action: :get,
+      method: :get,
       params: params,
       path: "/customers"
     }
@@ -51,7 +51,7 @@ defmodule Malomo.Customer do
   @spec update(binary, map) :: Malomo.Operation.t()
   def update(id, params) do
     %Malomo.Operation{
-      action: :put,
+      method: :put,
       params: params,
       path: "/customers/#{id}"
     }

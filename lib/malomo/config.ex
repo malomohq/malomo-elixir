@@ -1,23 +1,29 @@
 defmodule Malomo.Config do
   @type t :: %__MODULE__{
                api_key: binary,
+               headers: Malomo.http_headers_t(),
                host: binary,
                http_client: module,
                http_client_opts: any,
                json_codec: module,
                path: binary,
                port: pos_integer | nil,
+               retry: boolean,
+               retry_opts: Keyword.t(),
                scheme: binary
              }
 
   defstruct api_key: nil,
-            host: nil,
+            headers: [],
+            host: "api.gomalomo.com",
             http_client: Malomo.HTTP.Hackney,
             http_client_opts: [],
             json_codec: Jason,
             path: "",
             port: nil,
-            scheme: nil
+            retry: false,
+            retry_opts: [],
+            scheme: "https"
 
   @doc """
   Build a new config struct.
