@@ -34,7 +34,8 @@ defmodule Malomo.MixProject do
       maintainers: ["Anthony Smith"],
       licenses: ["MIT"],
       links: %{
-        GitHub: "https://github.com/malomohq/malomo-elixir"
+        GitHub: "https://github.com/malomohq/malomo-elixir",
+        "Made by Malomo - Post-purchase experiences that customers love": "https://gomalomo.com"
       }
     }
   end
