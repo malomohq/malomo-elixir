@@ -14,7 +14,7 @@ defmodule Malomo.Helpers.URL do
   def to_uri(operation, config) do
     %URI{
       host: config.host,
-      path: "/#{config.path}/#{operation.path}",
+      path: "/#{config.path}#{operation.path}",
       port: config.port,
       scheme: config.scheme
     }
