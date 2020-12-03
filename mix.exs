@@ -8,6 +8,8 @@ defmodule Malomo.MixProject do
       elixir: "~> 1.9",
       start_permanent: Mix.env() == :prod,
       deps: deps(),
+      dialyzer: [plt_add_apps: [:hackney]],
+      elixirc_paths: elixirc_paths(Mix.env()),
       package: package()
     ]
   end
@@ -32,6 +34,14 @@ defmodule Malomo.MixProject do
 
       { :ex_doc, ">= 0.0.0", only: :dev, runtime: false }
     ]
+  end
+
+  defp elixirc_paths(:test) do
+    ["lib/", "test/"]
+  end
+
+  defp elixirc_paths(_env) do
+    ["lib/"]
   end
 
   defp package do
