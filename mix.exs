@@ -4,7 +4,7 @@ defmodule Malomo.MixProject do
   def project do
     [
       app: :malomo,
-      version: "2.0.0",
+      version: "2.0.0-rc.0",
       elixir: "~> 1.9",
       start_permanent: Mix.env() == :prod,
       deps: deps(),
