@@ -13,6 +13,17 @@ defmodule Malomo.Order do
   end
 
   @doc """
+  Creates an event for an order.
+  """
+  @spec create_event(String.t(), Keyword.t()) :: Operation.t()
+  def create_event(order_id, opts) do
+    %Operation{}
+    |> Map.put(:method, :post)
+    |> Map.put(:params, opts)
+    |> Map.put(:path, "/orders/#{order_id}/events")
+  end
+
+  @doc """
   Delete a order.
   """
   @spec delete(String.t()) :: Operation.t()

@@ -12,6 +12,15 @@ defmodule Malomo.OrderTest do
     assert expected == Order.create(p1: "v")
   end
 
+  test "create_event/2" do
+    expected = %Operation{}
+    expected = Map.put(expected, :method, :post)
+    expected = Map.put(expected, :params, [p1: "v"])
+    expected = Map.put(expected, :path, "/orders/id/events")
+
+    assert expected == Order.create_event("id", p1: "v")
+  end
+
   test "delete/1" do
     expected = %Operation{}
     expected = Map.put(expected, :method, :delete)
