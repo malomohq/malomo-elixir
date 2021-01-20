@@ -6,7 +6,7 @@
 
 ```elixir
 defp deps do
-  { :malomo, "2.0.0-rc.0" }
+  { :malomo, "2.0.0-rc.2" }
 end
 ```
 
