@@ -154,7 +154,7 @@ defmodule MalomoTest do
 
     Malomo.request(operation, http_client: Http.Mock)
 
-    assert "hello%3Dworld" == Http.Mock.get_request_body()
+    assert "hello=world" == Http.Mock.get_request_body()
   end
 
   test "returns :ok when the request is successful" do
