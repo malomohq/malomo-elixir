@@ -6,7 +6,7 @@
 
 ```elixir
 defp deps do
-  { :malomo, "2.0.0-rc.3" }
+  { :malomo, "2.0.0-rc.4" }
 end
 ```
 
@@ -26,7 +26,7 @@ function.
 Malomo.Account.get() |> Malomo.request(access_token: "...")
 ```
 
-For details on individual resource types [please see our document on HexDocs](https://hexdocs.pm/malomo/2.0.0-rc.3/api-reference.html).
+For details on individual resource types [please see our document on HexDocs](https://hexdocs.pm/malomo/2.0.0-rc.4/api-reference.html).
 
 ## Configuration
 
