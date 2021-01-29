@@ -9,6 +9,13 @@ defmodule Malomo.Helpers.Body do
     ""
   end
 
+  def encode!(%_{ encoding: :www_form_urlencoded } = operation, _config) do
+    operation.params
+    |> Enum.into(%{})
+    |> URI.encode_query
+    |> URI.encode_www_form()
+  end
+
   def encode!(operation, config) do
     operation.params
     |> Enum.into(%{})

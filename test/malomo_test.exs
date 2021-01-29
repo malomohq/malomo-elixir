@@ -83,6 +83,24 @@ defmodule MalomoTest do
     assert { "x-custom-header", "true" } in Http.Mock.get_request_headers()
   end
 
+  test "sends the proper \"content-type\" header when encoding is :www_form_urlencoded" do
+    Http.Mock.start_link()
+
+    response = { :ok, @ok_resp }
+
+    Http.Mock.put_response(response)
+
+    operation = %Operation{}
+    operation = Map.put(operation, :encoding, :www_form_urlencoded)
+    operation = Map.put(operation, :method, :get)
+    operation = Map.put(operation, :params, [hello: "world"])
+    operation = Map.put(operation, :path, "/fake")
+
+    Malomo.request(operation, http_client: Http.Mock)
+
+    assert { "content-type", "application/x-www-form-urlencoded" } in Http.Mock.get_request_headers()
+  end
+
   test "sends the proper body for GET requests" do
     Http.Mock.start_link()
 
@@ -123,6 +141,20 @@ defmodule MalomoTest do
     Malomo.request(operation, http_client: Http.Mock)
 
     assert "{\"hello\":\"world\"}" == Http.Mock.get_request_body()
+  end
+
+  test "sends the proper body when encoding is :www_form_urlencoded" do
+    Http.Mock.start_link()
+
+    response = { :ok, @ok_resp }
+
+    Http.Mock.put_response(response)
+
+    operation = %Operation{ encoding: :www_form_urlencoded, method: :post, params: [hello: "world"], path: "/fake" }
+
+    Malomo.request(operation, http_client: Http.Mock)
+
+    assert "hello%3Dworld" == Http.Mock.get_request_body()
   end
 
   test "returns :ok when the request is successful" do

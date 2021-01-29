@@ -25,7 +25,7 @@ defmodule Malomo.Request do
     headers = []
     headers = headers ++ [{ "accept", "application/vnd.malomo+json; version=2" }]
     headers = headers ++ [{ "authorization", "Bearer #{config.access_token}" }]
-    headers = headers ++ [{ "content-type", "application/json" }]
+    headers = headers ++ Helpers.Headers.content_type(operation)
     headers = headers ++ config.http_headers
 
     url = Helpers.Url.to_string(operation, config)
