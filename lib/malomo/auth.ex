@@ -11,6 +11,6 @@ defmodule Malomo.Auth do
     %Operation{}
     |> Map.put(:method, :post)
     |> Map.put(:params, opts)
-    |> Map.put(:path, "/oauth2/auth")
+    |> Map.put(:path, "/oauth2/token")
   end
 end
