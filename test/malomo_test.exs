@@ -198,4 +198,17 @@ defmodule MalomoTest do
 
     assert ^response = result
   end
+
+  test "properly handles retries" do
+    Http.Mock.start_link()
+
+    Http.Mock.put_response({ :error, :timeout })
+    Http.Mock.put_response({ :ok, @ok_resp })
+
+    operation = %Operation{ method: :post, params: [hello: "world"], path: "/fake" }
+
+    result = Malomo.request(operation, http_client: Http.Mock, retry: Malomo.Retry.Linear)
+
+    assert { :ok, %Response{} } = result
+  end
 end

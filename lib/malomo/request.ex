@@ -79,7 +79,9 @@ defmodule Malomo.Request do
 
       :timer.sleep(seconds_to_wait)
 
-      __MODULE__.send(request, config)
+      request
+      |> config.http_client.send(config.http_client_opts)
+      |> retry(request, config)
     else
       response
     end
