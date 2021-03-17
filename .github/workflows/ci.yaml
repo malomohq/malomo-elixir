@@ -16,7 +16,7 @@ jobs:
 
           path: _build
 
-      - uses: actions/setup-elixir@v1
+      - uses: erlef/setup-elixir@v1
 
         with:
           elixir-version: ${{ matrix.elixir }}
@@ -46,7 +46,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: erlef/checkout@v2
 
       - uses: actions/cache@v2
 
