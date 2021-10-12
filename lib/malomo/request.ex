@@ -20,7 +20,7 @@ defmodule Malomo.Request do
 
   @spec new(Operation.t(), Config.t()) :: t
   def new(operation, config) do
-    body = Helpers.Body.encode!(operation, config)
+    body = encode_body!(operation, config)
 
     headers = []
     headers = headers ++ [{ "accept", "application/vnd.malomo+json; version=2" }]
@@ -35,6 +35,23 @@ defmodule Malomo.Request do
     |> Map.put(:headers, headers)
     |> Map.put(:method, operation.method)
     |> Map.put(:url, url)
+  end
+
+  defp encode_body!(%_{ method: method }, _config)
+      when method == :delete or method == :get do
+    ""
+  end
+
+  defp encode_body!(%_{ encoding: :www_form_urlencoded } = operation, _config) do
+    operation.params
+    |> Enum.into(%{})
+    |> URI.encode_query()
+  end
+
+  defp encode_body!(operation, config) do
+    operation.params
+    |> Enum.into(%{})
+    |> config.json_codec.encode!()
   end
 
   @spec send(t, Config.t()) :: Malomo.http_response_t()
