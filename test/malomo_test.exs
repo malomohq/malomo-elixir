@@ -157,6 +157,20 @@ defmodule MalomoTest do
     assert "hello=world" == Http.Mock.get_request_body()
   end
 
+  test "parses the body properly when no body is returned" do
+    Http.Mock.start_link()
+
+    response = { :ok, %{ body: "", headers: [], status_code: 204 } }
+
+    Http.Mock.put_response(response)
+
+    operation = %Operation{ method: :delete, path: "/fake" }
+
+    { :ok, %_{ body: body } } = Malomo.request(operation, http_client: Http.Mock)
+
+    assert %{} == body
+  end
+
   test "returns :ok when the request is successful" do
     Http.Mock.start_link()
 
