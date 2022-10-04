@@ -1,11 +1,20 @@
 version: 2
 
 updates:
-  - package-ecosystem: mix
+  - directory: "/"
 
-    directory: "/"
+    package-ecosystem: github-actions
 
     schedule:
       interval: daily
 
-    target-branch: master
+    target-branch: main
+
+  - directory: "/"
+
+    package-ecosystem: mix
+
+    schedule:
+      interval: daily
+
+    target-branch: main
