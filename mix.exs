@@ -5,7 +5,7 @@ defmodule Malomo.MixProject do
     [
       app: :malomo,
       version: "2.0.0-rc.7",
-      elixir: "~> 1.10",
+      elixir: "~> 1.12",
       start_permanent: Mix.env() == :prod,
       deps: deps(),
       dialyzer: [plt_add_apps: [:hackney]],
@@ -22,17 +22,15 @@ defmodule Malomo.MixProject do
 
   defp deps do
     [
-      { :hackney, "~> 1.16", optional: true },
-
-      { :jason, "~> 1.2", optional: true },
+      {:hackney, "~> 1.16", optional: true},
+      {:jason, "~> 1.2", optional: true},
 
       #
       # dev
       #
 
-      { :dialyxir, "~> 1.0", only: :dev, runtime: false },
-
-      { :ex_doc, ">= 0.0.0", only: :dev, runtime: false }
+      {:dialyxir, "~> 1.0", only: :dev, runtime: false},
+      {:ex_doc, ">= 0.0.0", only: :dev, runtime: false}
     ]
   end
 
@@ -47,14 +45,10 @@ defmodule Malomo.MixProject do
   defp package do
     %{
       description: "Elixir client for the Malomo v2 API",
-
       maintainers: ["Anthony Smith"],
-
       licenses: ["MIT"],
-
       links: %{
         GitHub: "https://github.com/malomohq/malomo-elixir",
-
         "Made by Malomo - Post-purchase experiences that customers love": "https://gomalomo.com"
       }
     }
