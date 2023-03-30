@@ -3,84 +3,236 @@ name: ci
 on: push
 
 jobs:
-  dialyzer:
-    runs-on: ubuntu-latest
+    dialyzer:
+        runs-on: ${{ matrix.os }}
 
-    steps:
-      - uses: actions/checkout@v3
+        steps:
+            - uses: actions/checkout@v3
 
-      - uses: actions/cache@v3
+            - uses: actions/cache@v3
 
-        with:
-          key: ${{ github.job }}-${{ matrix.elixir }}-${{ matrix.otp }}-${{ hashFiles('mix.lock') }}
+              with:
+                  key: ${{ github.job }}-${{ matrix.elixir }}-${{ matrix.erlang }}-${{ hashFiles('mix.lock') }}
 
-          path: _build
+                  path: |
+                      _build
+                      deps
 
-      - uses: erlef/setup-beam@v1
+            - uses: erlef/setup-beam@v1
 
-        with:
-          elixir-version: ${{ matrix.elixir }}
+              with:
+                  elixir-version: ${{ matrix.elixir }}
 
-          otp-version: ${{ matrix.otp }}
+                  otp-version: ${{ matrix.erlang }}
 
-      - run: mix deps.get
+            - run: mix deps.get
 
-      - run: mix dialyzer
+            - run: mix compile --warnings-as-errors
 
-    strategy:
-      matrix:
-        elixir:
-          - 1.12.x
-          - 1.13.x
-          - 1.14.x
+            - run: mix dialyzer --format github
 
-        exclude:
-          - elixir: 1.12.x
+            - run: rm -rf _build/dev/lib/postscript
 
-            otp: 25.x
+        strategy:
+            matrix:
+                include:
+                    - elixir: 1.10.x
 
-        otp:
-          - 23.x
-          - 24.x
-          - 25.x
+                      erlang: 21.x
 
-  test:
-    runs-on: ubuntu-latest
+                      os: ubuntu-20.04
 
-    steps:
-      - uses: actions/checkout@v3
+                    - elixir: 1.10.x
 
-      - uses: actions/cache@v3
+                      erlang: 22.x
 
-        with:
-          key: ${{ github.job }}-${{ matrix.elixir }}-${{ matrix.otp }}-${{ hashFiles('mix.lock') }}
+                      os: ubuntu-20.04
 
-          path: _build
+                    - elixir: 1.11.x
 
-      - uses: erlef/setup-beam@v1
+                      erlang: 21.x
 
-        with:
-          elixir-version: ${{ matrix.elixir }}
+                      os: ubuntu-20.04
 
-          otp-version: ${{ matrix.otp }}
+                    - elixir: 1.11.x
 
-      - run: mix deps.get
+                      erlang: 22.x
 
-      - run: mix test
+                      os: ubuntu-20.04
 
-    strategy:
-      matrix:
-        elixir:
-          - 1.12.x
-          - 1.13.x
-          - 1.14.x
+                    - elixir: 1.11.x
 
-        exclude:
-          - elixir: 1.12.x
+                      erlang: 23.x
 
-            otp: 25.x
+                      os: ubuntu-20.04
 
-        otp:
-          - 23.x
-          - 24.x
-          - 25.x
+                    - elixir: 1.12.x
+
+                      erlang: 22.x
+
+                      os: ubuntu-20.04
+
+                    - elixir: 1.12.x
+
+                      erlang: 23.x
+
+                      os: ubuntu-20.04
+
+                    - elixir: 1.12.x
+
+                      erlang: 24.x
+
+                      os: ubuntu-22.04
+
+                    - elixir: 1.13.x
+
+                      erlang: 22.x
+
+                      os: ubuntu-20.04
+
+                    - elixir: 1.13.x
+
+                      erlang: 23.x
+
+                      os: ubuntu-20.04
+
+                    - elixir: 1.13.x
+
+                      erlang: 24.x
+
+                      os: ubuntu-22.04
+
+                    - elixir: 1.14.x
+
+                      erlang: 23.x
+
+                      os: ubuntu-20.04
+
+                    - elixir: 1.14.x
+
+                      erlang: 24.x
+
+                      os: ubuntu-22.04
+
+                    - elixir: 1.14.x
+
+                      erlang: 25.x
+
+                      os: ubuntu-22.04
+
+    test:
+        runs-on: ${{ matrix.os }}
+
+        steps:
+            - uses: actions/checkout@v3
+
+            - uses: actions/cache@v3
+
+              with:
+                  key: ${{ github.job }}-${{ matrix.elixir }}-${{ matrix.erlang }}-${{ hashFiles('mix.lock') }}
+
+                  path: |
+                      _build
+                      deps
+
+            - uses: erlef/setup-beam@v1
+
+              with:
+                  elixir-version: ${{ matrix.elixir }}
+
+                  otp-version: ${{ matrix.erlang }}
+
+            - run: mix deps.get
+
+            - run: MIX_ENV=test mix compile --warnings-as-errors
+
+            - run: mix test
+
+            - run: rm -rf _build/test/lib/postscript
+
+        strategy:
+            matrix:
+                include:
+                    - elixir: 1.10.x
+
+                      erlang: 21.x
+
+                      os: ubuntu-20.04
+
+                    - elixir: 1.10.x
+
+                      erlang: 22.x
+
+                      os: ubuntu-20.04
+
+                    - elixir: 1.11.x
+
+                      erlang: 21.x
+
+                      os: ubuntu-20.04
+
+                    - elixir: 1.11.x
+
+                      erlang: 22.x
+
+                      os: ubuntu-20.04
+
+                    - elixir: 1.11.x
+
+                      erlang: 23.x
+
+                      os: ubuntu-20.04
+
+                    - elixir: 1.12.x
+
+                      erlang: 22.x
+
+                      os: ubuntu-20.04
+
+                    - elixir: 1.12.x
+
+                      erlang: 23.x
+
+                      os: ubuntu-20.04
+
+                    - elixir: 1.12.x
+
+                      erlang: 24.x
+
+                      os: ubuntu-22.04
+
+                    - elixir: 1.13.x
+
+                      erlang: 22.x
+
+                      os: ubuntu-20.04
+
+                    - elixir: 1.13.x
+
+                      erlang: 23.x
+
+                      os: ubuntu-20.04
+
+                    - elixir: 1.13.x
+
+                      erlang: 24.x
+
+                      os: ubuntu-22.04
+
+                    - elixir: 1.14.x
+
+                      erlang: 23.x
+
+                      os: ubuntu-20.04
+
+                    - elixir: 1.14.x
+
+                      erlang: 24.x
+
+                      os: ubuntu-22.04
+
+                    - elixir: 1.14.x
+
+                      erlang: 25.x
+
+                      os: ubuntu-22.04
